@@ -8,6 +8,7 @@ from PyPDF2 import PdfReader
 from typing import Optional, Tuple
 from skimage.transform import rotate
 from skimage import exposure
+import datetime
 
 pytesseract.pytesseract.tesseract_cmd = r'D:\Program Files\Tesseract-OCR\tesseract.exe'  # 取消注释并修改为您的Tesseract安装路径
 
@@ -212,6 +213,26 @@ class OCR_Model:
             # 计算平均置信度
             avg_confidence = confidence_sum / confidence_count if confidence_count > 0 else 0.0
             
+            # 保存OCR文本到raw_data目录
+            try:
+                # 确保raw_data目录存在
+                raw_data_dir = "raw_data"
+                os.makedirs(raw_data_dir, exist_ok=True)
+                
+                # 生成唯一的文件名，使用时间戳和原始文件名
+                timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+                original_filename = os.path.splitext(os.path.basename(image_path))[0]
+                raw_filename = f"{original_filename}_ocr_{timestamp}.txt"
+                raw_filepath = os.path.join(raw_data_dir, raw_filename)
+                
+                # 写入文件
+                with open(raw_filepath, 'w', encoding='utf-8') as f:
+                    f.write(text)
+                
+                print(f"OCR文本已保存到: {raw_filepath}")
+            except Exception as e_save:
+                print(f"保存OCR文本时发生错误: {str(e_save)}")
+            
             return {"text": text, "confidence": avg_confidence, "skew_angle": self.detect_skew(cv2.imread(image_path))}
         except Exception as e:
             return {"error": f"OCR处理时发生错误: {str(e)}", "text": "", "confidence": 0.0, "skew_angle": 0.0}
@@ -304,6 +325,26 @@ class OCR_Model:
         
         # 计算整体平均置信度
         overall_confidence = total_confidence_sum / total_confidence_count if total_confidence_count > 0 else 0.0
+        
+        # 保存OCR文本到raw_data目录
+        try:
+            # 确保raw_data目录存在
+            raw_data_dir = "raw_data"
+            os.makedirs(raw_data_dir, exist_ok=True)
+            
+            # 生成唯一的文件名，使用时间戳和原始文件名
+            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            original_filename = os.path.splitext(os.path.basename(pdf_path))[0]
+            raw_filename = f"{original_filename}_ocr_{timestamp}.txt"
+            raw_filepath = os.path.join(raw_data_dir, raw_filename)
+            
+            # 写入文件
+            with open(raw_filepath, 'w', encoding='utf-8') as f:
+                f.write(doc)
+            
+            print(f"OCR文本已保存到: {raw_filepath}")
+        except Exception as e_save:
+            print(f"保存OCR文本时发生错误: {str(e_save)}")
         
         # 返回结果
         result = {
