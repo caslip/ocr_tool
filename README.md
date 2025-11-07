@@ -17,6 +17,15 @@ This project is using the Ollama qwen3:8b to process the ocr_raw_data, it will g
 
 You can also using --no-llm to skip the llm processing if you want to see the result of OCR directly.
 
+### 3. Visble consequence inspection
+
+using the following command:
+
+```bash
+streamlit run visble.py
+```
+
+
 
 ## Installation
 1. Install python libraries

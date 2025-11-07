@@ -42,7 +42,7 @@ def perform_mcp_ocr(image_path):
     # API Configuration
     BASE_URL = "https://www.dmxapi.cn/v1/"
     API_ENDPOINT = BASE_URL + "chat/completions"
-    API_KEY = "sk-************************************************"  # Please replace with your DMXAPI key
+    API_KEY = "sk-A9zKdNTdavo4Li0RWEFzJ8wpEbXwU00vm2YV4xgKjHxm3EAG"  # Please replace with your DMXAPI key
                   
     image_data = encode_image(image_path)
     payload = {
@@ -354,7 +354,7 @@ def process_directory(directory_path, mode='Public', no_llm=False, custom_dict=N
             continue
             
         stats['total_files'] += 1
-        print(f"\n正在处理文件: {filename} ({stats['processed_files'] + 1}/{stats['total_files']})")
+        print(f"\nProcessing: {filename} ({stats['processed_files'] + 1}/{stats['total_files']})")
         
         
         # Set output file path
@@ -432,7 +432,7 @@ def process_directory(directory_path, mode='Public', no_llm=False, custom_dict=N
                     "ocr_mode": mode
                 }
             
-            # 如果没有跳过AI Agent处理，则进行AI Agent处理
+            # if not skipping AI Agent processing, perform AI Agent processing
             if LLM and not no_llm:
                 print(f"AI Agent is processing...")
                 
@@ -475,7 +475,7 @@ def process_directory(directory_path, mode='Public', no_llm=False, custom_dict=N
                         "temp_file": temp_txt_path
                     }
             
-            # 保存结果
+            # Save and print result
             _save_and_print_result(result, output_path, verbose, file_path, confidence, skew_angle, file_ext, mode)
             stats['processed_files'] += 1
             
@@ -485,8 +485,8 @@ def process_directory(directory_path, mode='Public', no_llm=False, custom_dict=N
             stats['failed_files'] += 1
             stats['errors'].append(error_msg)
     
-    # 打印统计信息
-    print("\n=== 处理完成 ===")
+    # Print summary
+    print("\n=== Processing Finish ===")
     print(f"File amount: {stats['total_files']}")
     print(f"Pass: {stats['processed_files']}")
     print(f"Fail: {stats['failed_files']}")
