@@ -13,7 +13,7 @@ python main.py --directory /your/pdf/ or /your/images/
 ```
 
 ### 2. Using llm to analyze files
-We using the Ollama qwen3:8b to process the ocr_raw_data, it will give you some key information and remind you to check the ocr data and the image data.
+This project is using the Ollama qwen3:8b to process the ocr_raw_data, it will give you some key information and remind you to check the ocr data and the image data.
 
 You can also using --no-llm to skip the llm processing if you want to see the result of OCR directly.
 
