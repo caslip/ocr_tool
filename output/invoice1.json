@@ -1,0 +1,12 @@
+{
+  "raw_text": "1hBREN]4‘BMS1400181130NoSie)as,TY0258699IYER669902443547kega开多日期:AEPaofPORERRHACEMRROR|9114103007795980730|||天|心ab.eg:HLARHERFECHEIRS124/65482*<7-1/130<1/>+5<298)广|apsey->>7->544<01541*03>3-8+*/</>上WaggaasFeREESEiiaba&‘z&it¥303.62iz=|Heit(AB)|Seam:445.00a2ale4iAS|911403116723429945人“4|2B.coir|,A方|开户行及最号:工行用南大酚支行05032310092000053413429945ERASrkFRARBNRFa;",
+  "confidence": 42.19444444444444,
+  "skew_angle": 0.0,
+  "llm_analysis": "```json\n{\n  \"文件分析\": {\n    \"文件路径\": \"raw_data\\\\invoice1_ocr.txt\",\n    \"内容类型\": \"发票OCR识别文本\",\n    \"关键信息提取\": {\n      \"发票号\": \"BMS1400181130\",\n      \"日期\": \"AEPaofPORERRHACEMRROR|9114103007795980730|||天|心ab.eg:HLARHERFECHEIRS124/65482*<7-1/130<1/>+5<298)广|apsey->>7->544<01541*03>3-8+*/</>上WaggaasFeREESEiiaba&‘z&it\",\n      \"金额\": [\n        {\"货币\": \"¥\", \"金额\": \"303.62\"},\n        {\"货币\": \"¥\", \"金额\": \"445.00\"}\n      ],\n      \"收款方\": \"Heit(AB)|Seam\",\n      \"付款方\": \"2B.coir|,A方\",\n      \"开户行及账号\": \"工行用南大酚支行05032310092000053413429945\"\n    },\n    \"异常情况\": {\n      \"乱码区域\": \"1hBREN]4‘BMS1400181130NoSie)as,TY0258699IYER669902443547kega开多日期:AEPaofPORERRHACEMRROR|9114103007795980730|||天|心ab.eg:HLARHERFECHEIRS124/65482*<7-1/130<1/>+5<298)广|apsey->>7->544<01541*03>3-8+*/</>上WaggaasFeREESEiiaba&‘z&it¥303.62iz=|Heit(AB)|Seam:445.00a2ale4iAS|911403116723429945人“4|2B.coir|,A方|开户行及最号:工行用南大酚支行05032310092000053413429945ERASrkFRARBNRFa;\",\n      \"可能错误\": [\n        \"日期字段包含非日期字符\",\n        \"金额字段存在符号干扰（如¥符号位置异常）\",\n        \"开户行名称疑似识别错误（'用南大酚支行'）\"\n      ]\n    },\n    \"建议\": \"需核对原始文件或重新扫描，部分字段存在明显OCR识别错误，建议人工校验关键信息（如金额、开户行）\"\n  }\n}\n```\n",
+  "ocr_mode": "Public",
+  "agent_processing": {
+    "status": "completed",
+    "output_file": "output\\invoice1_agent_analysis.json",
+    "temp_file": "raw_data\\invoice1_ocr.txt"
+  }
+}
